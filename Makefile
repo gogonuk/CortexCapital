@@ -4,7 +4,7 @@
 
 PROJECT_NAME = test_1
 PYTHON_VERSION = 3.12
-PYTHON_INTERPRETER = ../.venv/bin/python
+PYTHON_INTERPRETER = .venv/bin/python
 
 #################################################################################
 # COMMANDS                                                                      #

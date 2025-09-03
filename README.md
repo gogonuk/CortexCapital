@@ -1,4 +1,5 @@
-# Financial Time Series Analysis Framework
+# CortexCapital
+*Evolving Financial Intelligence. Quantitative Analysis for Modern Investing.*
 
 [![CCDS - Project template](https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter)](https://cookiecutter-data-science.drivendata.org/)
 
@@ -60,12 +61,12 @@ To set up the environment and run the full pipeline:
 1.  **Clone the repository:**
     ```bash
     git clone <repository_url>
-    cd <repository_name>/test_1
+    cd <repository_name>
     ```
 2.  **Create and activate a virtual environment:**
     ```bash
-    python3 -m venv ../.venv
-    source ../.venv/bin/activate
+    python3 -m venv .venv
+    source .venv/bin/activate
     ```
 3.  **Install dependencies:**
     ```bash
@@ -81,7 +82,7 @@ To set up the environment and run the full pipeline:
     ```bash
     # This command will take a significant amount of time due to hyperparameter tuning.
     # You can adjust prediction_threshold and transaction_cost as needed.
-    ../.venv/bin/python gogo_test/modeling/train.py --prediction-threshold 0.005 --transaction-cost 0.0005
+    .venv/bin/python gogo_test/modeling/train.py --prediction-threshold 0.005 --transaction-cost 0.0005
     ```
 6.  **Make a prediction:**
     ```bash
