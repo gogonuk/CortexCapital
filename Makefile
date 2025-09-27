@@ -68,12 +68,17 @@ data: requirements
 
 ## Make features
 .PHONY: features
-features: requirements
+features: data
 	$(PYTHON_INTERPRETER) gogo_test/features.py
+
+## Generate regime features from data
+.PHONY: mining
+mining: features
+	$(PYTHON_INTERPRETER) gogo_test/mining.py
 
 ## Train model
 .PHONY: train
-train: requirements
+train: mining
 	$(PYTHON_INTERPRETER) gogo_test/modeling/train.py
 
 ## Predict with model
