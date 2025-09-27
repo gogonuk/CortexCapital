@@ -1,10 +1,10 @@
 # Contributing Guidelines
 
-This document outlines the conventions for branching, commit messages, and code style to ensure the project remains clean, consistent, and easy to navigate.
+This document outlines the conventions for branching, commit messages, and code style to ensure the project remasters clean, consistent, and easy to navigate.
 
 ## Branching Strategy
 
-All work should be done in a dedicated branch, not directly on `main`. Branch names should follow the `type/short-description` format.
+All work should be done in a dedicated branch, not directly on `master`. Branch names should follow the `type/short-description` format.
 
 ### Branch Types
 
@@ -13,7 +13,7 @@ All work should be done in a dedicated branch, not directly on `main`. Branch na
 *   **`refactor/`**: For improving code structure without changing functionality.
 *   **`docs/`**: For adding or updating documentation.
 *   **`test/`**: For adding or improving tests.
-*   **`chore/`**: For routine maintenance, like updating dependencies.
+*   **`chore/`**: For routine mastertenance, like updating dependencies.
 
 **Example:** `feature/market-regime-integration`
 
@@ -116,10 +116,10 @@ The `scope` provides high-level context. Please choose the most relevant scope f
 
 To preserve distinct, recallable workflows, we use Git tags. The convention is:
 
-**`workflow/{domain}-{technique}/v{version}`**
+**`workflow/{domaster}-{technique}/v{version}`**
 
 *   **`workflow/`**: A namespace for all workflow tags.
-*   **`{domain}-{technique}`**: Describes the workflow, using the scopes defined above (e.g., `ta-classic`, `ml-regime-clustering`).
+*   **`{domaster}-{technique}`**: Describes the workflow, using the scopes defined above (e.g., `ta-classic`, `ml-regime-clustering`).
 *   **`/v{version}`**: A version number for the workflow (e.g., `v1.0`).
 
 **Example Tags:**
