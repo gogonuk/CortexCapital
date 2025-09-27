@@ -1,47 +1,42 @@
-# Our Data Science Journey Log
+## Project Journey Log
 
-This document chronicles the key milestones and successful tasks accomplished during the development of this Financial Time Series Analysis Framework.
+### 2025-09-27 - Integration of Market Regime Detection & Git Conventions
 
----
+A significant step was taken today to enhance the project's predictive capabilities and establish robust development practices.
 
-## September 3, 2025
+**Key Advancements:**
 
-### Project Setup & Initial Pipeline
+*   **Market Regime Detection:** Implemented a new data mining step (`gogo_test/mining.py`) using K-Means clustering to identify distinct market regimes. This feature is now integrated into the data pipeline, and the `train.py` and `predict.py` scripts have been updated to utilize these regime features (one-hot encoded) for improved model performance.
+*   **Enhanced Pipeline:** The `Makefile` has been updated to include a `mining` step, ensuring the market regime features are generated automatically as part of the `make train` command.
+*   **Git Conventions Established:** A comprehensive `CONTRIBUTING.md` file was created to document:
+    *   A clear branching strategy (`type/short-description`).
+    *   A Conventional Commits message format (`type(scope): short description`).
+    *   A detailed list of commit scopes for various data analysis domains.
+    *   A Git Tag convention (`workflow/{domain}-{technique}/v{version}`) for preserving distinct workflow snapshots.
+*   **Workflow Snapshots:** The project's history now includes two key workflow tags:
+    *   `workflow/ta-classic/v1.0`: Represents the original, classic technical analysis pipeline.
+    *   `workflow/ml-regime-clustering/v1.0`: Represents the new, enhanced machine learning pipeline with market regime detection.
 
-*   **Repository Review:** Conducted an initial review of the cookiecutter-generated repository structure.
-*   **Makefile Enhancements:** Added `make train`, `make predict`, and `make features` commands to automate the workflow.
-*   **Placeholder Scripts:** Created initial placeholder scripts for `dataset.py`, `features.py`, `modeling/train.py`, and `modeling/predict.py`.
-*   **Basic Testing Setup:** Added basic `typer.testing` based tests for `dataset.py`, `features.py`, `modeling/train.py`, and `modeling/predict.py`.
+This work significantly advances the project's analytical depth and ensures a structured, auditable development process.
 
-### Core Pipeline Implementation
 
-*   **Dependency Management:** Added `yfinance` and `ta` to `requirements.txt`.
-*   **Data Acquisition (`make data`):** Modified `gogo_test/dataset.py` to download historical AAPL stock data using `yfinance` and save it to `data/raw/aapl.csv`.
-*   **Feature Engineering (`make features`):** Modified `gogo_test/features.py` to calculate:
-    *   Simple Moving Average (SMA)
-    *   Relative Strength Index (RSI)
-    *   MACD and MACD Signal
-    *   Bollinger Bands (Lower, Middle, Upper)
-    *   Lagged 'Close' and 'Volume'
-    *   Simple Moving Average of 'Volume'
-*   **Data Visualization (`make plot`):** Modified `gogo_test/plots.py` to plot 'Close' price vs. 'SMA'.
-
-### Model Training & Evaluation
-
-*   **Linear Regression Model:** Implemented a basic Linear Regression model in `gogo_test/modeling/train.py` to predict the next day's closing price.
-*   **Random Forest Regressor:** Switched the model to `RandomForestRegressor` for potentially better performance.
-*   **Walk-Forward Validation:** Implemented a robust walk-forward validation strategy in `gogo_test/modeling/train.py` for realistic time series model evaluation.
-*   **Financial Metrics Calculation:** Added `calculate_financial_metrics` to `gogo_test/modeling/train.py` to compute:
-    *   Total Return
-    *   Sharpe Ratio
-    *   Maximum Drawdown
-    *   Number of Trades
-*   **Strategy Refinement:** Introduced `prediction_threshold`, `transaction_cost`, `take_profit_percentage`, and `stop_loss_percentage` parameters to the trading strategy for more realistic backtesting.
-*   **Hyperparameter Tuning (Attempted):** Integrated `GridSearchCV` for hyperparameter tuning, but reverted due to computational intensity on local machine.
-
-### Project Maintenance & Documentation
-
-*   **Package Renaming:** Successfully refactored the project from `gogo test` to `gogo_test` (directory, `pyproject.toml`, and all imports) to resolve installation issues.
-*   **README.md Update:** Proposed and implemented a comprehensive and appealing `README.md` reflecting the project's new purpose and structure.
+This document tracks the experiments and data mining studies performed on this project.
 
 ---
+
+### 2025-09-27: Experiment 01 - Market Regime Clustering
+
+**Notebook:** `notebooks/01_market_regime_clustering.ipynb`
+
+**Objective:** To determine if the market exhibits distinct regimes that can be identified through unsupervised clustering. The hypothesis is that the model's performance can be improved by tailoring strategies to different market conditions.
+
+**Methodology:**
+
+1.  Selected key features for clustering: `RSI`, `MACD`, `BBM`, `daily_return`, and `volatility`.
+2.  Used the Elbow Method to find the optimal number of clusters, which suggested k=3 or k=4.
+3.  Applied K-Means clustering to group the data into distinct market regimes.
+4.  Visualized the regimes on a price chart to analyze their characteristics.
+
+**Outcome & Next Steps:**
+
+The analysis successfully identified distinct market regimes (e.g., high-volatility, trending, etc.). The next step is to incorporate the identified `regime` as a new feature into the machine learning model in `gogo_test/modeling/train.py` to see if it improves predictive performance.

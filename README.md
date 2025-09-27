@@ -9,6 +9,7 @@ This repository provides a robust and reproducible framework for financial time 
 
 *   **Automated Data Acquisition:** Easily download historical stock data (e.g., AAPL) using `yfinance`.
 *   **Sophisticated Feature Engineering:** Generate a rich set of features including Simple Moving Averages (SMA), Relative Strength Index (RSI), MACD, Bollinger Bands, and lagged price/volume data.
+*   **Market Regime Detection:** Uses K-Means clustering to identify distinct market states (e.g., high/low volatility) and incorporates them as features to improve model performance.
 *   **Walk-Forward Validation:** A robust methodology for evaluating time series models, simulating real-world trading scenarios.
 *   **Financial Metrics Calculation:** Assess strategy performance using Total Return, Sharpe Ratio, and Maximum Drawdown, accounting for prediction thresholds and transaction costs.
 *   **Modular and Reproducible:** A clear project structure and `Makefile` commands ensure reproducibility and ease of collaboration.
@@ -47,6 +48,7 @@ This repository provides a robust and reproducible framework for financial time 
     ├── config.py               <- Stores useful variables and configuration (e.g., paths).
     ├── dataset.py              <- Scripts to download and prepare raw data.
     ├── features.py             <- Code to create sophisticated features for modeling.
+    ├── mining.py               <- Code to generate market regime features using clustering.
     ├── plots.py                <- Code to create visualizations of data and features.
     └── modeling                
         ├── __init__.py 
@@ -72,21 +74,22 @@ To set up the environment and run the full pipeline:
     ```bash
     make requirements
     ```
-4.  **Run the data pipeline:**
+4.  **Run the full data and modeling pipeline:**
+    ```bash
+    make train
+    ```
+
+5.  **Make a prediction with the trained model:**
+    ```bash
+    make predict
+    ```
+
+6.  **To run steps individually:**
     ```bash
     make data
     make features
+    make mining
     make plot
-    ```
-5.  **Train the model with walk-forward validation and evaluate financial metrics:**
-    ```bash
-    # This command will take a significant amount of time due to hyperparameter tuning.
-    # You can adjust prediction_threshold and transaction_cost as needed.
-    .venv/bin/python gogo_test/modeling/train.py --prediction-threshold 0.005 --transaction-cost 0.0005
-    ```
-6.  **Make a prediction:**
-    ```bash
-    make predict
     ```
 
 ## How to Contribute
