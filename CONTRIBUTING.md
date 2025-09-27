@@ -111,3 +111,17 @@ The `scope` provides high-level context. Please choose the most relevant scope f
 
 ---
 **Example Commit:** `feat(ml-clustering): Integrate market regime detection`
+
+## Git Tag Convention
+
+To preserve distinct, recallable workflows, we use Git tags. The convention is:
+
+**`workflow/{domain}-{technique}/v{version}`**
+
+*   **`workflow/`**: A namespace for all workflow tags.
+*   **`{domain}-{technique}`**: Describes the workflow, using the scopes defined above (e.g., `ta-classic`, `ml-regime-clustering`).
+*   **`/v{version}`**: A version number for the workflow (e.g., `v1.0`).
+
+**Example Tags:**
+*   `workflow/ta-classic/v1.0`
+*   `workflow/ml-regime-clustering/v1.0`
